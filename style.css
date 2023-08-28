@@ -1,23 +1,57 @@
-header nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+header {
+  font-family: 'Lucida Sans', Verdana, sans-serif;
+}
+
+header, footer {
+  background: #58378C;
+  color: white;
+  padding: 16px;
+}
+
+#logo-header {
+  font-size: 32px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+main {
+  background-color: #EF7D19;
+  padding: 16px;
+  color: white;
+  font-family: 'Lucida Sans', Verdana, sans-serif;
+}
+
+img {
+  margin: 32px;
+}
+
+.rede-social {
+  font-family: 'Segoe UI', Verdana, sans-serif;
+  margin: 8px;
+}
+
+/* flex box */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ul {
   display: flex;
   justify-content: flex-end;
 }
 
-header nav li {
-  margin-left: 20px;
+li, .rede-social {
+  margin-left: 48px;
 }
 
-footer ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: flex-end;
-}
-
-footer li {
-  margin-left: 20px;
+#sabia {
+  background-color: white;
+  padding: 16px;
+  color: blue;
+  font-family: 'Lucida Sans', Verdana, sans-serif;
 }
