@@ -1,3 +1,5 @@
+CREATE DATABASE ESCOLA;
+
 CREATE TABLE ALUNO(
 	id_aluno SERIAL PRIMARY KEY,
   	nome VARCHAR(24),
@@ -9,7 +11,7 @@ INSERT INTO ALUNO
 	(nome, email, endereco)
 VALUES
 	('João Carlos', 'jcarlos@gmail.com', 'rua 13 de maio'),
-    ('José Vitor', 'jvitor@gmail.com', 'rua da saudade'),
-    ('Paulo André', 'pandr@gmail.com', 'rua do sol');
+    	('José Vitor', 'jvitor@gmail.com', 'rua da saudade'),
+   	 ('Paulo André', 'pandr@gmail.com', 'rua do sol');
     
 SELECT * FROM ALUNO;
