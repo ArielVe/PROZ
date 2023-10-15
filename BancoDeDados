@@ -1,0 +1,29 @@
+CREATE DATABASE PROZdb;
+USAGE PROZdb;
+
+CREATE TABLE Clientes (
+  ID serial PRIMARY KEY,
+  Nome VARCHAR(50) NOT NULL,
+  Email VARCHAR(100) UNIQUE NOT NULL
+);
+
+INSERT INTO Clientes (Nome, Email) VALUES
+  ('João', 'joao@email.com'),
+  ('Maria', 'maria@email.com');
+
+CREATE TABLE Pedidos (
+  ID serial PRIMARY KEY,
+  ClienteID INT REFERENCES Clientes(ID),
+  Produto VARCHAR(100) NOT NULL,
+  Quantidade INT NOT NULL
+);
+
+INSERT INTO Pedidos (ClienteID, Produto, Quantidade) VALUES
+  (1, 'Produto A', 3),
+  (2, 'Produto B', 2),
+  (1, 'Produto C', 1);
+
+SELECT Pedidos.ID, Clientes.Nome, Pedidos.Produto, Pedidos.Quantidade
+FROM Pedidos
+INNER JOIN Clientes ON Pedidos.ClienteID = Clientes.ID;
+
