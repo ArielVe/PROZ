@@ -1,5 +1,5 @@
 CREATE DATABASE PROZdb;
-USAGE PROZdb;
+USE PROZdb;
 
 CREATE TABLE Clientes (
   ID serial PRIMARY KEY,
@@ -26,4 +26,21 @@ INSERT INTO Pedidos (ClienteID, Produto, Quantidade) VALUES
 SELECT Pedidos.ID, Clientes.Nome, Pedidos.Produto, Pedidos.Quantidade
 FROM Pedidos
 INNER JOIN Clientes ON Pedidos.ClienteID = Clientes.ID;
+
+SELECT Clientes.Nome, Pedidos.Produto
+FROM Clientes
+LEFT JOIN Pedidos ON Clientes.ID = Pedidos.ClienteID;
+
+SELECT Clientes.Nome, Pedidos.Produto
+FROM Pedidos
+LEFT JOIN Clientes ON Pedidos.ClienteID = Clientes.ID;
+
+SELECT NomeProduto, Valor
+FROM VendasOnline
+WHERE DataVenda = '2023-09-23'
+UNION
+SELECT NomeProduto, Valor
+FROM VendasNaLoja
+WHERE DataVenda = '2023-09-23';
+
 
