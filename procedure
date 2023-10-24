@@ -1,0 +1,26 @@
+CREATE TABLE Compras (
+    ID SERIAL PRIMARY KEY,
+    DataCompra DATE,
+    Quantidade INTEGER
+);
+
+-- Inserir dados de exemplo
+INSERT INTO Compras (DataCompra, Quantidade) VALUES
+    ('2023-09-01', 5),
+    ('2023-09-01', 3),
+    ('2023-09-02', 2),
+    ('2023-09-02', 4),
+    ('2023-09-03', 7);
+
+CREATE OR REPLACE FUNCTION RelatorioDiarioCompras()
+RETURNS TABLE (Data DATE, QuantidadeTotal INTEGER) AS $$
+BEGIN
+    RETURN QUERY
+    SELECT DataCompra, SUM(Quantidade)
+    FROM Compras
+    GROUP BY DataCompra
+    ORDER BY DataCompra;
+END;
+$$ LANGUAGE plpgsql;
+
+SELECT * FROM RelatorioDiarioCompras();
