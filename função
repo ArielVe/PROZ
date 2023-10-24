@@ -1,0 +1,27 @@
+CREATE TABLE Clientes (
+    ID SERIAL PRIMARY KEY,
+    Nome VARCHAR(100),
+    DataCadastro DATE
+);
+
+INSERT INTO Clientes (Nome, DataCadastro) VALUES
+    ('Cliente A', '2023-09-01'),
+    ('Cliente B', '2023-09-01'),
+    ('Cliente C', '2023-09-02'),
+    ('Cliente D', '2023-09-02'),
+    ('Cliente E', '2023-09-03');
+
+CREATE OR REPLACE FUNCTION SomarClientesCadastrados(data_consulta DATE)
+RETURNS INTEGER AS $$
+DECLARE
+    total_clientes INTEGER;
+BEGIN
+    SELECT COUNT(*) INTO total_clientes
+    FROM Clientes
+    WHERE DataCadastro = data_consulta;
+
+    RETURN total_clientes;
+END;
+$$ LANGUAGE plpgsql;
+
+SELECT SomarClientesCadastrados('2023-09-01');
